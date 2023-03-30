@@ -1,0 +1,9 @@
+{
+  "name": "vi-tests",
+  "version": "1.0.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "vitest": "^0.29.8"
+  }
+}
