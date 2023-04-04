@@ -23,8 +23,8 @@ const poco = {foo: 'bar'};
 const error = new Error('BANG!');
 
 
-C.table(Object.getOwnPropertyDescriptor(poco, 'foo'));
-C.table(Object.getOwnPropertyDescriptor(error, 'message'));
+console.table(Object.getOwnPropertyDescriptor(poco, 'foo'));
+console.table(Object.getOwnPropertyDescriptor(error, 'message'));
 ```
 
 Running this gives the following tables:
@@ -94,13 +94,13 @@ This will output:
 Monkey-patching is generally frowned upon.  If you can defend it though then the following _might_ give a possible solution:
 
 ```javascript
-const error3 = new Error('Bang!');
+const error = new Error('Bang!');
 
 Error.prototype.toJSON = function toJSON() {
     return '{"message":"' + this.message + '","name":"' + this.name + '","stack":"' + this.stack + '","message":"' + this.message + '"}';
 }
-const obj3 = { foo: 'bar', error: error3};
-console.log(JSON.stringify(obj3));
+const obj = { foo: 'bar', error: error};
+console.log(JSON.stringify(obj));
 ```
 
 > NB:  This will cause `JSON.stringify` to simply dump ret result of `toJSON` into the correct place in the hierarchy.  It will not do any further processing, for example, if you are formatting the output then this will not be formatted.
@@ -129,8 +129,8 @@ function replacer(key, value) {
     }
     return value;
 }
-const obj4 = { foo: 'bar', error:error };
-console.log(JSON.stringify(obj4, replacer, 2));
+const obj = { foo: 'bar', error:error };
+console.log(JSON.stringify(obj, replacer, 2));
 ```
 
 This outputs:
