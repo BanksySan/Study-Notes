@@ -1,0 +1,12 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 1    # Number of seconds to run
+      arrivalRate: 10 # Number of users per second
+scenarios:
+  - flow:
+      - get:
+          url: "/echo/hello-world-1"
+  - flow:
+      - get:
+          url: "/echo/hello-world-2"

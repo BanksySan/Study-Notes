@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Custom processor" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/artillery-workshop/demos/custom-processor/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="run" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

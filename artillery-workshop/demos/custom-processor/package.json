@@ -1,0 +1,7 @@
+{
+  "name": "custom-processor",
+  "version": "1.0.0",
+  "scripts": {
+    "run": "artillery run custom-processor.yaml"
+  }
+}

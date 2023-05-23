@@ -1,0 +1,23 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 1    # Number of seconds to run
+      arrivalRate: 1 # Number of users per second
+  # processor:  'debugging.js'
+scenarios:
+  - flow:
+#      - get:
+#          url: "/echo/foo"
+#          capture:
+#            - json: "$.message"
+#              as: message
+#      - log: "Message: {{ message }}"
+
+      - get:
+          url: "/headers"
+          capture:
+            - header: x-bar
+              as: xBar
+              strict: false
+      - log: "X-Bar:  {{ xBar }}"
+

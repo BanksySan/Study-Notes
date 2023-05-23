@@ -1,0 +1,8 @@
+{
+  "name": "environments",
+  "version": "1.0.0",
+  "scripts": {
+    "run:environment-a": "artillery run environments.yaml --environment environmentA",
+    "run:environment-b": "artillery run environments.yaml --environment environmentB"
+  }
+}

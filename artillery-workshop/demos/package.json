@@ -1,0 +1,19 @@
+{
+  "name": "demos",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "capture",
+    "hello-world",
+    "variables",
+    "environments",
+    "custom-processor",
+    "plug-in/demo"
+  ],
+  "dependencies": {
+    "artillery": "^2.0.0-32"
+  },
+  "volta": {
+    "node": "16.15.0"
+  }
+}

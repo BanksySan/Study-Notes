@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run: Hello World Debug" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/artillery-workshop/demos/hello-world/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="run" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs>
+      <env name="DEBUG" value="http*" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

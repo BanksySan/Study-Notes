@@ -1,0 +1,28 @@
+config:
+  target: http://localhost:3000
+  phases:
+    - duration: 1
+      arrivalRate: 10
+  variables:
+    staticMessage: "Static message"
+    variableMessage:
+      - "Message A"
+      - "Message B"
+      - "Message C"
+  payload:
+    path: 'messages.csv'
+    fields:
+      - "Firstname"
+      - "Surname"
+    skipHeader: true
+    order: sequence
+scenarios:
+  - flow:
+      - get:
+          url: "/echo/{{ staticMessage }}"
+      - get:
+          url: "/echo/{{ variableMessage }}"
+      - get:
+          url: "/echo/{{ Firstname }}"
+      - get:
+          url: "/echo/{{ Surname }}"

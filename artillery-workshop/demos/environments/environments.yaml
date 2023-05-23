@@ -1,0 +1,24 @@
+config:
+  environments:
+    environmentA:
+      target: "http://localhost:3000/echo/environmentA"
+      variables:
+        foo: "bar-a"
+    environmentB:
+      target: "http://localhost:3000/echo/environmentB"
+      variables:
+        foo: "bar-b"
+  variables:
+    bar:
+      - "foo-1"
+      - "foo-2"
+      - "foo-3"
+      - "foo-4"
+      - "foo-5"
+  phases:
+    - duration: 1    # Number of seconds to run
+      arrivalRate: 10 # Number of users per second
+scenarios:
+  - flow:
+      - get:
+          url: "/?foo={{ foo }}&bar={{ bar }}"

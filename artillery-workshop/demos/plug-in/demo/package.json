@@ -1,0 +1,11 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "dependencies": {
+    "artillery-plugin-demo": "link:../artillery-plugin-demo"
+  },
+  "scripts": {
+    "run": "artillery run plug-in.yaml"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "capture",
+  "version": "1.0.0",
+  "scripts": {
+    "run": "artillery run capture.yaml",
+    "example:run": "artillery run example-com.yaml"
+  },
+  "dependencies": {
+  }
+}

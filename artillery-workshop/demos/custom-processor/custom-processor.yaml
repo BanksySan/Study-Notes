@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 1    # Number of seconds to run
+      arrivalRate: 1 # Number of users per second
+  processor: "custom-processor.js"
+scenarios:
+  - flow:
+      - get:
+          url: "/echo/hello-world-1"
+          beforeRequest: appendMessage
+          afterResponse: captureContentType
+      - function: sayMyName
+      - log: "Content Type: {{ contentType }}"

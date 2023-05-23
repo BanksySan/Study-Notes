@@ -1,0 +1,8 @@
+{
+  "name": "artillery-plugin-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "debug": "^4.3.4"
+  }
+}
