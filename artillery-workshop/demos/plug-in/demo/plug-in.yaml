@@ -4,7 +4,10 @@ config:
     - duration: 1
       arrivalRate: 1
   plugins:
-    demo: {}
+    demo: {
+            message1: "Message 1",
+            message2: "Message 2",
+    }
 scenarios:
   - flow:
       - get:

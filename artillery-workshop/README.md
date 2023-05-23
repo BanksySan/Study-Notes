@@ -363,7 +363,7 @@ Captures are performed in a request block in the `flow` section.  They only sear
 
 > **IMPORTANT** There is a bug in the `regexp` implementation rendering it largely useless.  Currently, the functionality to use groups if broken.  [PR](https://github.com/artilleryio/artillery/pull/1922) submitted to fix so hopefully this is a temporary bug.
 
-> **IMPORTANT** The selector option uses jQuery-ish syntax via Cheerio.  Whilst this can pull out attributes on nodes, and notes themselves it cannot pull out the text values of a node.  e.g. `<p>Foo</p>` cannot pull `Foo`.
+> **IMPORTANT** The selector option uses jQuery-ish syntax via Cheerio.  Whilst this can pull out attributes on nodes, and nodes themselves it cannot pull out the text values of a node.  e.g. `<p class="special">Foo</p>` cannot pull `Foo`, only `<p class="special">`.
 
 This leaves us with two of the built-in options left to play with:
 
@@ -415,6 +415,59 @@ HTTP allows a header key to be reused.  These are usually parsed as an array of 
 
 We can address all these problems using a custom processor/plug-in instead of the `capture`.
 
-## Plug-in
+## Plug-ins
 
-These are very powerful and can be distributed we npm packages.
+[Documentation](https://www.artillery.io/docs/guides/guides/extension-apis#plugins)
+
+These are very powerful and are distributed via npm packages.  A plugin has unfettered access to the entire script (i.e. as defined in the YAML file) for modification.  It can also subscribe to various events in order to catch and emit bespoke metrics. 
+
+The structure of a plugin.
+
+1. It must be a valid npm package.
+2. Must have a name starting with `artillery-plugin`.
+3. The main file (as defined in `package.json`) must export a `Plugin` function with of the form  `function ArtilleryPluginDemo (script, events)` via the commonJS mechanism (i.e. `module.exports.Plugin = function someFunction(script, events)`).
+
+This means that the bare bones, no-op plugin would look like this:
+
+```javascript
+module.exports.Plugin = ArtilleryPluginDemo;
+
+/**
+ * A plugin to demonstrate some of the functionality of a plugin.
+ * @param script { Object }
+ * @param events { EventEmitter }
+ * @constructor
+ */
+function ArtilleryPluginDemo (script, events) {
+}
+
+/**
+ * OPTIONAL.  Will be called immediately prior to the plugin being unloaded.
+ * @param done { Function } This must be called at the end of the function.
+ */
+ArtilleryPluginDemo.prototype.cleanup = function clean(done) {
+
+   return done();
+}
+```
+
+The `script` contains the same info as the YAML script.  The `events` object is used to subscript to events.
+
+Adding a plugin to the script involves adding it to the package in the `package.json` and then referencing it in the `plugins` block in the `config` section, arguments are passed as an object:
+
+**NB** Don't include the `artillery-plugin-` prefix to the package name.  e.g. `artillery-plugin-foobar` becomes `foobar`.
+
+```yaml
+  plugins:
+    demo: {
+            message1: "Message 1",
+            message2: "Message 2",
+    }
+```
+
+We access the arguments via the `script` object in the plugin:
+
+```javascript
+const arguments = script.config.plugins["plugin-name"];
+```
+
