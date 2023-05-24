@@ -4,6 +4,7 @@
   "private": true,
   "workspaces": [
     "capture",
+    "example",
     "hello-world",
     "variables",
     "environments",
@@ -11,9 +12,11 @@
     "plug-in/demo"
   ],
   "dependencies": {
-    "artillery": "^2.0.0-32"
+    "artillery": "^2.0.0-32",
+    "prettier": "^2.8.8"
   },
   "volta": {
-    "node": "16.15.0"
+    "node": "16.15.0",
+    "yarn": "3.5.1"
   }
 }
