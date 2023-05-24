@@ -4,7 +4,5 @@
   "scripts": {
     "run": "artillery run capture.yaml",
     "example:run": "artillery run example-com.yaml"
-  },
-  "dependencies": {
   }
 }

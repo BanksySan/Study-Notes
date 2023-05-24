@@ -4,7 +4,5 @@
   "private": true,
   "scripts": {
     "run": "artillery run variables.yaml"
-  },
-  "dependencies": {
   }
 }
