@@ -2,6 +2,9 @@
   "name": "demos",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "lint": "prettier --check ."
+  },
   "workspaces": [
     "capture",
     "hello-world",
@@ -12,6 +15,9 @@
   ],
   "dependencies": {
     "artillery": "^2.0.0-32"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
   },
   "volta": {
     "node": "16.15.0"
