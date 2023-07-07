@@ -5,10 +5,21 @@ config:
       arrivalRate: 1
   plugins:
     demo: {
-            message1: "Message 1",
-            message2: "Message 2",
+      message1: "Message 1",
+      message2: "Message 2",
+      experiments: {
+        oneWebIe: variant
+      }
+
     }
 scenarios:
   - flow:
       - get:
-          url: "/echo/foobar"
+          url: "/echo/1"
+      - get:
+          url: "/echo/2"
+      - get:
+          url: "/echo/3"
+      - get:
+          url: "/echo/4"
+      - log: "FOOBAR"

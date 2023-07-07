@@ -1,0 +1,20 @@
+{
+  "name": "cli-chat",
+  "version": "0.0.1-alpha-1",
+  "description": "Demo of CLI based Chat GPT",
+  "type": "module",
+  "main": "index.js",
+  "author": "David Banks",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
+  },
+  "dependencies": {
+    "openai": "^3.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
