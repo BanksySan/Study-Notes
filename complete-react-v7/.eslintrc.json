@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
+  "plugins": [],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": false
+    },
+    "ecmaVersion": 2022,
+    "sourceType": "script"
+  },
+  "env": {
+    "es6": true,
+    "browser": false,
+    "node": true
+  }
+}
