@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useBreedList from "./useBreedList";
 import Pet from "./Pet";
 
 const ANIMALS = ["bird", "dog", "cat", "rabbit", "reptile"];
@@ -9,25 +10,22 @@ const SearchParams = () => {
   const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
-  const BREEDS = ["cocapoo", "whippet"];
+  const [breeds] = useBreedList(animal);
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
-    requestPets(); // Empty `.then` due to warning over ignoring returned Promise.
+    requestPets().then(); // Empty `.then` due to warning over ignoring returned Promise.
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
   async function requestPets() {
-    const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`,
-    );
+    const res = await fetch(`http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`);
 
     const json = await res.json();
 
     setPets(json["pets"]);
   }
 
-  return (
-    <div className="search-params">
+  return (<div className="search-params">
       <form>
         <label htmlFor="location">
           Location
@@ -53,11 +51,9 @@ const SearchParams = () => {
             }}
           >
             <option />
-            {ANIMALS.map((x) => (
-              <option key={x} value={x}>
+            {ANIMALS.map((x) => (<option key={x} value={x}>
                 {x}
-              </option>
-            ))}
+              </option>))}
           </select>
         </label>
         <label htmlFor="breed">
@@ -73,11 +69,9 @@ const SearchParams = () => {
             }}
           >
             <option />
-            {BREEDS.map((x) => (
-              <option key={x} value={x}>
+            {breeds.map((x) => (<option key={x} value={x}>
                 {x}
-              </option>
-            ))}
+              </option>))}
           </select>
         </label>
         <button type="submit">Submit</button>
@@ -86,17 +80,14 @@ const SearchParams = () => {
         const petName = pet.name;
         const petAnimal = pet.animal;
         const petBreed = pet.breed;
-        return (
-          <Pet
+        return (<Pet
             name={petName}
             animal={petAnimal}
             breed={petBreed}
             key={JSON.stringify({ petName, petAnimal, petBreed })}
-          />
-        );
+          />);
       })}
-    </div>
-  );
+    </div>);
 };
 
 export default SearchParams;
