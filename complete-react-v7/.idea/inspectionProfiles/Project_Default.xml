@@ -16,6 +16,7 @@
           <option value="http://localhost" />
           <option value="http://maven.apache.org/POM/" />
           <option value="http://maven.apache.org/xsd/" />
+          <option value="http://pet-images.dev-apis.com" />
           <option value="http://pets-v2.dev-apis.com" />
           <option value="http://primefaces.org/ui" />
           <option value="http://schema.cloudfoundry.org/spring/" />
